@@ -30,7 +30,7 @@ var MENU = [
     { id: 'ballgirl', name: 'Ball Girl Latte', price: 7, desc: 'Brown sugar matcha with lavender cold foam' }
   ]}
 ];
-var MILKS = ['Whole', 'Almond', 'Soy'];
+var MILKS = ['Whole', 'Oat', 'Almond'];
 var SYRUPS = ['Vanilla', 'Caramel', 'Lavender', 'White Mocha', 'Pistachio', 'Hazelnut'];
 
 function $(s, r) { return (r || document).querySelector(s); }
@@ -71,7 +71,7 @@ function copyText(text) {
   var list = $('#drink-list');
   if (!list) return;
   var cart = {}; // id -> {qty,temp,milk,syrup}
-  var pastry = false, when = 'ASAP';
+  var when = 'ASAP';
   var byId = {};
   MENU.forEach(function (g) { g.items.forEach(function (i) { byId[i.id] = i; }); });
 
@@ -110,7 +110,6 @@ function copyText(text) {
     var name = (nameEl.value || '').trim() || 'Guest';
     var lines = ['☕ 15-Love order – ' + name];
     Object.keys(cart).forEach(function (id) { lines.push(line(id)); });
-    if (pastry) lines.push('+ pastry if available');
     lines.push('Pickup: ' + (when === 'Pick a time' ? (timeEl.value || 'ASAP') : when));
     if ($('#o-notes').value.trim()) lines.push('Notes: ' + notesEl.value.trim());
     lines.push('Est. ' + money(totals().t));
@@ -126,8 +125,7 @@ function copyText(text) {
     bar.classList.toggle('show', t.n > 0);
     document.body.classList.toggle('has-cart', t.n > 0);
     sumToggle.textContent = t.n + (t.n === 1 ? ' drink' : ' drinks') + ' · est. ' + money(t.t);
-    itemsEl.innerHTML = Object.keys(cart).map(function (id) { return '<li>' + line(id) + '</li>'; }).join('') + (pastry ? '<li>+ pastry if available</li>' : '');
-    $('#desk-msg').value = buildMsg();
+    itemsEl.innerHTML = Object.keys(cart).map(function (id) { return '<li>' + line(id) + '</li>'; }).join('');
     if (!t.n) bar.classList.remove('expanded');
   }
   function setCart(id, qty, extra) {
@@ -154,7 +152,6 @@ function copyText(text) {
     var row = e.target.closest('.drink'); if (!row || !e.target.dataset.f) return;
     cart[row.dataset.id][e.target.dataset.f] = e.target.value; render();
   });
-  $('#pastry').addEventListener('change', function (e) { pastry = e.target.checked; render(); });
 
   sumToggle.addEventListener('click', function () {
     var x = bar.classList.toggle('expanded'); sumToggle.setAttribute('aria-expanded', x);
@@ -179,30 +176,33 @@ function copyText(text) {
   }
   function remember() {
     store('lc_name', nameEl.value.trim());
-    store('lc_last', JSON.stringify({ cart: cart, pastry: pastry }));
+    store('lc_last', JSON.stringify({ cart: cart }));
   }
   function sendText() {
     if (!ensureName()) return;
     var msg = buildMsg(); remember(); window.location.href = smsLink(msg);
   }
   sendBtn.addEventListener('click', sendText);
-  $('#send-order2').addEventListener('click', sendText);
+  var modal = $('#ig-modal');
+  function closeModal() { modal.hidden = true; $('#send-ig').focus(); }
   $('#send-ig').addEventListener('click', function () {
     if (!ensureName()) return;
     var msg = buildMsg(); remember();
-    copyText(msg).then(function () {
-      $('#ig-note').textContent = 'Copied! Paste it in our DMs.';
-      window.open(IG_DM, '_blank', 'noopener');
+    $('#ig-msg').value = msg;
+    $('#ig-title').textContent = 'Copying your order\u2026';
+    modal.hidden = false;
+    copyText(msg).then(function (ok) {
+      $('#ig-title').textContent = ok ? 'Your order is copied \u2705' : 'Copy your order below';
+      $('#ig-step1').textContent = ok ? 'Your order is copied. Nothing is sent yet.' : 'Tap \u201cCopy order\u201d below to copy it.';
+      $('#ig-title').focus();
     });
   });
-  $('#copy-desk').addEventListener('click', function () {
-    copyText($('#desk-msg').value).then(function (ok) { $('#copy-note').textContent = ok ? 'Copied!' : 'Select the text and copy it.'; });
+  $('#ig-copy').addEventListener('click', function () {
+    var box = $('#ig-msg'); box.select();
+    copyText(box.value).then(function (ok) { $('#ig-copy-note').textContent = ok ? 'Copied!' : 'Select the text above and copy it.'; });
   });
-
-  // desktop fallback
-  var coarse = window.matchMedia && window.matchMedia('(pointer:coarse)').matches;
-  if (!coarse && window.innerWidth >= 900) $('#desktop-box').classList.add('active');
-
+  $('#ig-close').addEventListener('click', closeModal);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
   // order again
   try {
     var last = JSON.parse(store('lc_last') || 'null');
@@ -218,7 +218,7 @@ function copyText(text) {
           var row = $('.drink[data-id="' + id + '"]');
           $$('select', row).forEach(function (s) { if (saved[id][s.dataset.f] !== undefined) s.value = saved[id][s.dataset.f] || (s.dataset.f === 'syrup' ? '' : s.value); });
         });
-        pastry = !!last.pastry; $('#pastry').checked = pastry; render();
+        render();
       });
     }
   } catch (e) {}

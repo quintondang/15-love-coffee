@@ -34,20 +34,13 @@
   <noscript><div class="noscript">This page needs JavaScript. No problem: <a href="https://ig.me/m/15lovecoffee">DM us on Instagram</a> or text <a href="sms:+13235458235">(323) 545-8235</a>.</div></noscript>
   <div id="last-order" class="last-order hidden"></div>
   <div id="drink-list"></div>
-  <div class="toggle-row"><input type="checkbox" id="pastry"><label for="pastry">Add a pastry (text for availability)</label></div>
-  <div id="desktop-box" class="desktop-only card" style="margin-top:24px">
-    <h2>Order from a computer?</h2>
-    <p>Text it to <a href="sms:+13235458235">(323) 545-8235</a>:</p>
-    <textarea id="desk-msg" class="msg-box" readonly aria-label="Your order message"></textarea>
-    <div class="btn-row"><button type="button" class="btn" id="copy-desk">Copy</button></div><p id="copy-note" aria-live="polite"></p>
-  </div>
   <section class="card" style="margin-top:28px">
     <h2>Prefer to just text?</h2>
     <ol><li>Text <a href="sms:+13235458235">(323) 545-8235</a>.</li><li>Tell us your name and what you&rsquo;d like.</li><li>Say when you&rsquo;ll pick up. Pay at the cart with Venmo or Zelle.</li></ol>
   </section>
 </section>
 <div class="summary" id="summary">
-  <div class="line"><button type="button" class="toggle" id="sum-toggle" aria-expanded="false" aria-controls="sum-details"></button><button type="button" class="btn" id="send-order">Send text order &rarr;</button></div>
+  <div class="line"><button type="button" class="toggle" id="sum-toggle" aria-expanded="false" aria-controls="sum-details"></button></div>
   <div class="details" id="sum-details">
     <ul id="sum-items"></ul>
     <div class="field"><label for="o-name">Name (required)</label><input type="text" id="o-name" autocomplete="given-name"><p class="err" id="name-err" aria-live="polite"></p></div>
@@ -61,10 +54,24 @@
       <div id="time-field" class="hidden"><label for="o-time">Pickup time</label><input type="time" id="o-time"></div></div>
     <div class="field"><label for="o-notes">Notes (optional)</label><input type="text" id="o-notes"></div>
     <p>Pickup at the cart. Pay there with Venmo or Zelle. Total is an estimate.</p>
-    <div class="send-pair"><button type="button" class="btn" id="send-order2">Send text order</button><button type="button" class="btn secondary" id="send-ig">Send on Instagram</button></div>
-    <p id="ig-note" aria-live="polite"></p>
   </div>
+  <div class="send-pair"><button type="button" class="btn" id="send-order">Send by text</button><button type="button" class="btn secondary" id="send-ig">Send by Instagram</button></div>
 </div>
+<div class="modal" id="ig-modal" role="dialog" aria-modal="true" aria-labelledby="ig-title" hidden>
+  <div class="modal-card">
+    <h2 id="ig-title" tabindex="-1">Your order is copied</h2>
+    <ol class="steps">
+      <li id="ig-step1">Your order is copied. Nothing is sent yet.</li>
+      <li>Tap <strong>Open Instagram</strong> below.</li>
+      <li><strong>Paste</strong> it into the message box (press and hold, then Paste) and hit <strong>send</strong>.</li>
+    </ol>
+    <a class="btn" id="ig-open" href="https://ig.me/m/15lovecoffee" target="_blank" rel="noopener">Open Instagram</a>
+    <label for="ig-msg" style="margin-top:16px">Your order</label>
+    <textarea id="ig-msg" class="msg-box" readonly></textarea>
+    <div class="btn-row"><button type="button" class="btn secondary" id="ig-copy">Copy order</button><button type="button" class="btn secondary" id="ig-close">Close</button></div>
+    <p id="ig-copy-note" aria-live="polite"></p>
+  </div>
+</div></div>
 </main>
 <footer class="site-footer">
   <div class="container">
