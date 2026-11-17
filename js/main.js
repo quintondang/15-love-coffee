@@ -211,7 +211,7 @@ function copyText(text) {
       var saved = last.cart;
       var txt = ids.map(function (id) { var c = saved[id]; return c.qty + '× ' + byId[id].name + ' (' + c.temp.toLowerCase() + ')'; }).join(', ');
       var box = $('#last-order');
-      box.innerHTML = '<strong>Your last order:</strong> ' + txt + ' <button type="button" class="btn" id="again" style="margin-top:8px">Order again</button>';
+      box.innerHTML = '<div class="lo-text"><strong>Your last order:</strong> ' + txt + '</div><button type="button" class="btn" id="again">Order again</button>';
       box.classList.remove('hidden');
       $('#again').addEventListener('click', function () {
         cart = {}; ids.forEach(function (id) { cart[id] = saved[id];

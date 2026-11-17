@@ -91,6 +91,9 @@ select,input[type=text],input[type=number],input[type=date],input[type=time],inp
 .toggle-row{display:flex;align-items:center;gap:10px;min-height:44px;margin-top:16px}
 .toggle-row input{width:24px;height:24px}
 .toggle-row label{margin:0}
+.last-order:not(.hidden){display:flex;align-items:center;justify-content:space-between;gap:14px}
+.last-order .lo-text{flex:1;min-width:0}
+.last-order .btn{flex-shrink:0;padding:0 18px}
 .last-order{background:var(--white);border:2px dashed var(--green);border-radius:var(--radius);padding:14px 18px;margin-bottom:20px}
 .summary{position:fixed;left:0;right:0;bottom:0;background:var(--green-dark);color:var(--cream);z-index:60;box-shadow:0 -4px 14px rgba(0,0,0,.25);display:none}
 .summary.show{display:block}
