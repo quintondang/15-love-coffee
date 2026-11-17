@@ -47,7 +47,7 @@
   </section>
 </section>
 <div class="summary" id="summary">
-  <div class="line"><button type="button" class="toggle" id="sum-toggle" aria-expanded="false" aria-controls="sum-details"></button><button type="button" class="btn" id="send-order">Send order &rarr;</button></div>
+  <div class="line"><button type="button" class="toggle" id="sum-toggle" aria-expanded="false" aria-controls="sum-details"></button><button type="button" class="btn" id="send-order">Send text order &rarr;</button></div>
   <div class="details" id="sum-details">
     <ul id="sum-items"></ul>
     <div class="field"><label for="o-name">Name (required)</label><input type="text" id="o-name" autocomplete="given-name"><p class="err" id="name-err" aria-live="polite"></p></div>
@@ -61,7 +61,7 @@
       <div id="time-field" class="hidden"><label for="o-time">Pickup time</label><input type="time" id="o-time"></div></div>
     <div class="field"><label for="o-notes">Notes (optional)</label><input type="text" id="o-notes"></div>
     <p>Pickup at the cart. Pay there with Venmo or Zelle. Total is an estimate.</p>
-    <button type="button" class="btn secondary" id="send-ig" style="color:var(--cream);border-color:var(--cream)">Send via Instagram instead</button>
+    <div class="send-pair"><button type="button" class="btn" id="send-order2">Send text order</button><button type="button" class="btn secondary" id="send-ig">Send on Instagram</button></div>
     <p id="ig-note" aria-live="polite"></p>
   </div>
 </div>

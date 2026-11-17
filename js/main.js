@@ -181,10 +181,12 @@ function copyText(text) {
     store('lc_name', nameEl.value.trim());
     store('lc_last', JSON.stringify({ cart: cart, pastry: pastry }));
   }
-  sendBtn.addEventListener('click', function () {
+  function sendText() {
     if (!ensureName()) return;
     var msg = buildMsg(); remember(); window.location.href = smsLink(msg);
-  });
+  }
+  sendBtn.addEventListener('click', sendText);
+  $('#send-order2').addEventListener('click', sendText);
   $('#send-ig').addEventListener('click', function () {
     if (!ensureName()) return;
     var msg = buildMsg(); remember();
