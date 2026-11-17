@@ -140,3 +140,6 @@ body.merch .site-header,body.merch .site-footer{background:var(--green-dark)}
 body.merch a{color:var(--cream)}
 .reader{max-width:300px;width:100%;height:auto}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* Clickable things show a pointer cursor */
+a[href],button,[role=tab],summary,select,input[type=checkbox],input[type=radio],input[type=date],input[type=time],label[for]{cursor:pointer}
+button:disabled,[aria-disabled=true]{cursor:not-allowed}
