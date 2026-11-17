@@ -9,7 +9,7 @@ Plain HTML, CSS and a little JavaScript. No build step, no accounts, no monthly 
 - **Menu text and prices:** update **two** places so they match:
   1. The list at the top of `js/main.js` (`MENU`). This powers the Order Ahead page and the estimated total.
   2. The "Text version of the menu" in `menu.html`.
-- **Hours / address / phone:** the footer is copied into every page. Change it in all 7 `.html` files (search for "Delivery 7:00 am"). The phone number and Instagram handle used by the order and booking buttons are at the top of `js/main.js` (`PHONE`, `IG_HANDLE`).
+- **Hours / address / phone:** the footer is copied into every page. Change it in all 7 `.html` files (search for "Tue &amp; Wed"). The phone number and Instagram handle used by the order and booking buttons are at the top of `js/main.js` (`PHONE`, `IG_HANDLE`).
 - **Text on a page:** open that page's `.html` file and edit the words between the tags. Don't touch the `<` `>` parts.
 - **Colors:** `css/styles.css`, the `:root` block at the top.
 
@@ -24,8 +24,6 @@ See section 7 of `PLAN.md` (GitHub Pages and the GoDaddy DNS records). The `CNAM
 
 ## Still needed from Bernie (TODO list)
 
-- Address or service area (footer shows a placeholder)
-- Confirm hours/days (currently the old site's "Delivery 7am-1pm Mon-Wed")
 - Typical prep time (for the ASAP / 15 / 30 min chips), payment method at the cart, and whether delivery is still offered
 - One-line descriptions of the Pop-Up and Catering offerings (placeholders on `services.html`)
 - Instagram photos for a Home gallery (later)
