@@ -79,7 +79,7 @@ function copyText(text) {
     return (none ? '<option value="">' + none + '</option>' : '') + arr.map(function (a) { return '<option>' + a + '</option>'; }).join('');
   }
   list.innerHTML = MENU.map(function (g) {
-    return '<section class="group"><h2>' + g.group + '</h2><div class="drinks">' + g.items.map(function (i) {
+    return '<section class="group"><h2>' + g.group + '</h2>' + g.items.map(function (i) {
       return '<div class="drink" data-id="' + i.id + '"><div class="info"><div class="name">' + i.name + ' <span class="price">' + money(i.price) + '</span></div>' +
         (i.desc ? '<div class="desc">' + i.desc + '</div>' : '') + '</div>' +
         '<button type="button" class="add" aria-label="Add ' + i.name + '">+</button>' +
@@ -88,7 +88,7 @@ function copyText(text) {
         '<div class="cust"><label>Temp<select data-f="temp">' + (i.hotOnly ? '<option>Hot</option>' : '<option>Iced</option><option>Hot</option>') + '</select></label>' +
         '<label>Milk<select data-f="milk">' + opt(MILKS) + '</select></label>' +
         '<label>Syrup<select data-f="syrup">' + opt(SYRUPS, 'None') + '</select></label></div></div>';
-    }).join('') + '</div></section>';
+    }).join('') + '</section>';
   }).join('');
 
   var bar = $('#summary'), sumToggle = $('#sum-toggle'), sendBtn = $('#send-order'), itemsEl = $('#sum-items');
