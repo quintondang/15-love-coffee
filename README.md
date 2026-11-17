@@ -20,11 +20,9 @@ Plain HTML, CSS and a little JavaScript. No build step, no accounts, no monthly 
 
 ## Publishing
 
-See section 7 of `PLAN.md` (GitHub Pages and the GoDaddy DNS records). The `CNAME` file must contain `15-lovecoffee.com`.
+See section 7 of `PLAN.md` (GitHub Pages and the GoDaddy DNS records). **The `CNAME` file is intentionally removed for now**, because the old site still lives at 15-lovecoffee.com and Pages would redirect to it. When ready to go live, add a file named `CNAME` containing exactly `15-lovecoffee.com` (and clear any custom domain in Settings → Pages first if it's set).
 
 ## Still needed from Bernie (TODO list)
 
-- Typical prep time (for the ASAP / 15 / 30 min chips), payment method at the cart, and whether delivery is still offered
-- One-line descriptions of the Pop-Up and Catering offerings (placeholders on `services.html`)
 - Instagram photos for a Home gallery (later)
 - Original Canva/design files for the menu and cartoons (nice to have)
