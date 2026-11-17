@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pop-Ups & Catering | 15-Love Coffee</title>
+<meta name="description" content="Book 15-Love Coffee for a pop-up or catered event. Fill out the form and send it to us on Instagram.">
+<meta property="og:title" content="Pop-Ups & Catering | 15-Love Coffee">
+<meta property="og:description" content="Book 15-Love Coffee for a pop-up or catered event. Fill out the form and send it to us on Instagram.">
+<meta property="og:image" content="images/logo-mascot.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="images/cutouts/logo-mascot.png">
+<link rel="apple-touch-icon" href="images/cutouts/logo-mascot.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html"><img src="images/cutouts/logo-mascot.png" width="40" height="44" alt="">15-Love Coffee</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">&#9776;</button>
+    <nav class="nav" id="site-nav" aria-label="Main"><ul><li><a href="index.html">Home</a></li><li><a href="menu.html">Menu</a></li><li><a href="order.html">Order Ahead</a></li><li><a href="services.html" aria-current="page">Services</a></li><li><a href="merch.html">Merch</a></li><li><a href="about.html">About</a></li></ul></nav>
+  </div>
+  <img class="header-ball" src="images/cutouts/cartoon-tennis-ball.png" width="60" height="39" alt="" aria-hidden="true">
+</header>
+<main id="main">
+
+<section class="section container">
+  <h1>Pop-Ups &amp; Catering</h1>
+  <noscript><div class="noscript">The booking form needs JavaScript. <a href="https://ig.me/m/15lovecoffee">DM us on Instagram</a> or text <a href="sms:+13235458235">(323) 545-8235</a>.</div></noscript>
+  <div class="tabs" role="tablist" aria-label="Service type">
+    <button role="tab" id="tab-popup" aria-selected="true" aria-controls="panel-popup" data-service="Pop-Up">Pop-Up</button>
+    <button role="tab" id="tab-catering" aria-selected="false" aria-controls="panel-catering" data-service="Catering" tabindex="-1">Catering</button>
+  </div>
+  <div role="tabpanel" id="panel-popup" aria-labelledby="tab-popup"><p>Bring the cart to your event and we&rsquo;ll serve drinks on the spot. <!-- TODO(Bernie): real Pop-Up description --></p></div>
+  <div role="tabpanel" id="panel-catering" aria-labelledby="tab-catering" hidden><p>Let us handle the coffee for your group, from office mornings to parties. <!-- TODO(Bernie): real Catering description --></p></div>
+  <!-- To switch to an embedded booking/quote tool later, replace the <form> with the provider's embed <iframe>/script here. -->
+  <form id="booking-form" class="card" novalidate>
+    <input type="hidden" id="service_type" name="service_type" value="Pop-Up">
+    <fieldset><legend>1. Your event</legend>
+      <div class="grid2">
+        <div><label for="b-guests">Number of guests</label><input type="number" id="b-guests" min="1" required></div>
+        <div><label for="b-loc">Event location / address</label><input type="text" id="b-loc" required autocomplete="street-address"></div>
+      </div></fieldset>
+    <fieldset><legend>2. Date &amp; time</legend>
+      <div class="grid2">
+        <div><label for="b-date">Event date</label><input type="date" id="b-date" required></div>
+        <div><label for="b-time">Start time</label><input type="time" id="b-time" required></div>
+        <div><label for="b-hours">Number of hours</label><select id="b-hours"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option><option>6+</option></select></div>
+      </div></fieldset>
+    <fieldset><legend>3. Contact</legend>
+      <div class="grid2">
+        <div><label for="b-name">Name</label><input type="text" id="b-name" required autocomplete="name"></div>
+        <div><label for="b-phone">Phone (optional)</label><input type="tel" id="b-phone" autocomplete="tel"></div>
+      </div>
+      <div style="margin-top:12px"><label for="b-notes">Notes (optional)</label><textarea id="b-notes" rows="3"></textarea></div></fieldset>
+    <button type="submit" class="btn">Build my booking request</button>
+  </form>
+  <div class="confirm" id="confirm" hidden>
+    <h2 id="confirm-title" tabindex="-1"></h2>
+    <div class="btn-row"><a class="btn" href="https://ig.me/m/15lovecoffee" target="_blank" rel="noopener">Open Instagram DMs</a><a class="btn secondary" id="sms-fallback" href="sms:+13235458235">No Instagram? Text it instead</a></div>
+    <label for="booking-msg" style="margin-top:16px">Your message</label>
+    <textarea id="booking-msg" class="msg-box" readonly></textarea>
+    <div class="btn-row"><button type="button" class="btn secondary" id="copy-again">Copy again</button></div><p id="copy-again-note" aria-live="polite"></p>
+  </div>
+  <p style="margin-top:24px">Prefer to just DM us? <a href="https://ig.me/m/15lovecoffee" target="_blank" rel="noopener">Message @15lovecoffee</a>.</p>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div><h2>Find us</h2><p>Serving the Los Angeles area <!-- TODO(Bernie): replace with address / service area --></p><p>TODO(Bernie): add address or service area</p></div>
+    <div><h2>Hours</h2><p>Delivery 7:00 am &ndash; 1:00 pm, Mon &ndash; Wed <!-- TODO(Bernie): confirm hours --></p></div>
+    <div><h2>Say hi</h2><p><a href="tel:+13235458235">(323) 545-8235</a></p><p><a class="ig-link" href="https://www.instagram.com/15lovecoffee" target="_blank" rel="noopener"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg> @15lovecoffee</a></p></div>
+    <p class="copy">&copy; 2026 15-Love Coffee</p>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>

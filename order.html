@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Order Ahead | 15-Love Coffee</title>
+<meta name="description" content="Tap your drinks and send your order to Bernie as a text. Fast, free, no account.">
+<meta property="og:title" content="Order Ahead | 15-Love Coffee">
+<meta property="og:description" content="Tap your drinks and send your order to Bernie as a text. Fast, free, no account.">
+<meta property="og:image" content="images/logo-mascot.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="images/cutouts/logo-mascot.png">
+<link rel="apple-touch-icon" href="images/cutouts/logo-mascot.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html"><img src="images/cutouts/logo-mascot.png" width="40" height="44" alt="">15-Love Coffee</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">&#9776;</button>
+    <nav class="nav" id="site-nav" aria-label="Main"><ul><li><a href="index.html">Home</a></li><li><a href="menu.html">Menu</a></li><li><a href="order.html" aria-current="page">Order Ahead</a></li><li><a href="services.html">Services</a></li><li><a href="merch.html">Merch</a></li><li><a href="about.html">About</a></li></ul></nav>
+  </div>
+  <img class="header-ball" src="images/cutouts/cartoon-tennis-ball.png" width="60" height="39" alt="" aria-hidden="true">
+</header>
+<main id="main">
+
+<section class="section container order-wrap">
+  <h1>Order Ahead</h1>
+  <p>Tap your drinks, hit send, and your order goes to Bernie as a text.</p>
+  <noscript><div class="noscript">This page needs JavaScript. No problem: <a href="https://ig.me/m/15lovecoffee">DM us on Instagram</a> or text <a href="sms:+13235458235">(323) 545-8235</a>.</div></noscript>
+  <div id="last-order" class="last-order hidden"></div>
+  <div id="drink-list"></div>
+  <div class="toggle-row"><input type="checkbox" id="pastry"><label for="pastry">Add a pastry (text for availability)</label></div>
+  <div id="desktop-box" class="desktop-only card" style="margin-top:24px">
+    <h2>Order from a computer?</h2>
+    <p>Text it to <a href="sms:+13235458235">(323) 545-8235</a>:</p>
+    <textarea id="desk-msg" class="msg-box" readonly aria-label="Your order message"></textarea>
+    <div class="btn-row"><button type="button" class="btn" id="copy-desk">Copy</button></div><p id="copy-note" aria-live="polite"></p>
+  </div>
+  <section class="card" style="margin-top:28px">
+    <h2>Prefer to just text?</h2>
+    <ol><li>Text <a href="sms:+13235458235">(323) 545-8235</a>.</li><li>Tell us your name and what you&rsquo;d like.</li><li>Say when you&rsquo;ll pick up. Pay at the cart. <!-- TODO(Bernie): confirm payment method, prep time, pickup vs delivery --></li></ol>
+  </section>
+</section>
+<div class="summary" id="summary">
+  <div class="line"><button type="button" class="toggle" id="sum-toggle" aria-expanded="false" aria-controls="sum-details"></button><button type="button" class="btn" id="send-order">Send order &rarr;</button></div>
+  <div class="details" id="sum-details">
+    <ul id="sum-items"></ul>
+    <div class="field"><label for="o-name">Name (required)</label><input type="text" id="o-name" autocomplete="given-name"><p class="err" id="name-err" aria-live="polite"></p></div>
+    <div class="field"><span id="when-l" style="font-weight:700">When</span>
+      <div class="chips" role="group" aria-labelledby="when-l">
+        <button type="button" class="chip" data-when="ASAP" aria-pressed="true">ASAP</button>
+        <button type="button" class="chip" data-when="15 min" aria-pressed="false">15 min</button>
+        <button type="button" class="chip" data-when="30 min" aria-pressed="false">30 min</button>
+        <button type="button" class="chip" data-when="Pick a time" aria-pressed="false">Pick a time</button>
+      </div>
+      <div id="time-field" class="hidden"><label for="o-time">Pickup time</label><input type="time" id="o-time"></div></div>
+    <div class="field"><label for="o-notes">Notes (optional)</label><input type="text" id="o-notes"></div>
+    <p>Payment is at the cart. Total is an estimate.</p>
+    <button type="button" class="btn secondary" id="send-ig" style="color:var(--cream);border-color:var(--cream)">Send via Instagram instead</button>
+    <p id="ig-note" aria-live="polite"></p>
+  </div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div><h2>Find us</h2><p>Serving the Los Angeles area <!-- TODO(Bernie): replace with address / service area --></p><p>TODO(Bernie): add address or service area</p></div>
+    <div><h2>Hours</h2><p>Delivery 7:00 am &ndash; 1:00 pm, Mon &ndash; Wed <!-- TODO(Bernie): confirm hours --></p></div>
+    <div><h2>Say hi</h2><p><a href="tel:+13235458235">(323) 545-8235</a></p><p><a class="ig-link" href="https://www.instagram.com/15lovecoffee" target="_blank" rel="noopener"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg> @15lovecoffee</a></p></div>
+    <p class="copy">&copy; 2026 15-Love Coffee</p>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
